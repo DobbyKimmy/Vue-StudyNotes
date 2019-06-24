@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-html</title>
+</head>
+<body>
+<div id="app">
+    <!--v-html的作用是:将文本按照html格式进行解析-->
+    <div v-html="msg"></div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+<script>
+    var app = new Vue({
+        el:'#app',
+        data:{
+            msg:'<span style="color: red;">vue is cool</span>'
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>过滤器</title>
+</head>
+<body>
+
+<div id="app">
+    {{date | formatDate}}
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+<script>
+    var zeroFormat = function (value) {
+        return value<10? '0'+value:value;
+    }
+    // 在页面中 实时显示当前时间
+    var app = new Vue({
+        el:'#app',
+        data:{
+            date:new Date()
+        },
+        mounted(){
+            this.timer = setInterval(()=>{
+                this.date = new Date()
+            },1000)
+        },
+        beforeDestroy(){
+            // 清除定时器
+            if(this.timer){
+                window.clearInterval(this.timer)
+            }
+        },
+        // 过滤器定义在 vue 实例中的 filters 属性中
+        filters:{
+            // 过滤器中的函数默认传值 value , value就是 '|' 前需要过滤的值 date,并且 value 是一个字符串!!
+            formatDate(value){
+                let date = new Date(value);
+                let year = date.getFullYear();
+                let month = zeroFormat(date.getMonth()+1);
+                let day = zeroFormat(date.getDate());
+                let hours = zeroFormat(date.getHours());
+                let minutes = zeroFormat(date.getMinutes());
+                let seconds = zeroFormat(date.getSeconds());
+                return year + '年' +  month + '月' +day + '日' + hours + '时' + minutes + '分' + seconds + '秒';
+            }
+        }
+    })
+</script>
+</body>
+</html>

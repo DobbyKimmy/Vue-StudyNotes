@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue的数据绑定</title>
+</head>
+<body>
+
+<div id="app">
+    {{msg}}
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+<script>
+    // 创建vue的实例
+    var app = new Vue({
+        // el 用于指定需要挂载页面中已存在的DOM元素
+        el:'#app',
+        // data 中为声明需要双向绑定的数据
+        data:{
+            msg:'vue is cool!'
+        }
+    });
+
+    // 访问 app 这个vue实例中的元素
+    // 1. 访问 vue实例"直系"的元素
+    console.log(app.$el);
+    // 2. 访问 data 中的元素
+    console.log(app.msg);
+</script>
+</body>
+</html>

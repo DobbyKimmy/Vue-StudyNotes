@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-bind</title>
+</head>
+<style>
+    .red{
+        color: red;
+    }
+</style>
+<body>
+<div id="app">
+    <!--v-bind:实现属性的动态绑定,强调:动态绑定!!-->
+    <div v-bind:class="className" v-text="msg"></div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+<script>
+    var app = new Vue({
+        el:'#app',
+        data:{
+            msg:'vue is cool',
+            className:'red'
+        }
+    });
+</script>
+</body>
+</html>

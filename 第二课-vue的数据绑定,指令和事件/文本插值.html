@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文本插值</title>
+</head>
+<body>
+<div id="app">
+    <!--文本插值只支持单行表达式-->
+    <!--文本插值,当改变双括号里面的值后页面可以进行实时更新-->
+    {{msg}}
+    <hr>
+    <!--文本插值支持简单的运算-->
+    {{1+2*3}}
+    <hr>
+    <!--文本插值支持三元运算符-->
+    {{num > 99 ? 'yes':'no'}}
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+<script>
+    var app = new Vue({
+        el:'#app',
+        data:{
+            msg:'vue is cool',
+            num:100
+        },
+        mounted(){
+            setTimeout(()=>{
+                this.msg = 'I love Vue'
+            },1000)
+        }
+    })
+</script>
+</body>
+</html>

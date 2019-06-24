@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算属性的getter和setter</title>
+</head>
+<body>
+<div id="app">
+    {{fullName}}
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+<script>
+    var app = new Vue({
+        el:'#app',
+        data:{
+            firstName:'Kobe',
+            lastName:'Bryant'
+        },
+        computed:{
+            //  计算属性的默认用法是 getter函数
+            fullName:{
+                get:function () {
+                    return this.firstName+' '+this.lastName;
+                },
+                set:function (newName) {
+                    firstName = newName.split(',')[0];
+                    lastName = newName.split(',')[1];
+                    this.firstName = firstName;
+                    this.lastName = lastName;
+                }
+            }
+        }
+    })
+</script>
+</body>
+</html>

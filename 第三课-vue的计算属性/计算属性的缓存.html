@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算属性的缓存</title>
+</head>
+<body>
+<div id="app">
+    <!--如果num没有渲染在页面上 methods方法也不会实时更新。只要页面重新渲染,方法就会重新执行-->
+    <!--无论页面是否发生渲染,只要计算属性依赖的数据未发生改变,页面上计算属性就不会发生变化-->
+    {{num}}
+    <hr>
+    计算属性的缓存: {{timeStamp}}
+    <hr>
+    methods方法: {{getTimeStamp()}}
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+<script>
+    // 1970到现在的时间戳
+    var app = new Vue({
+        el:'#app',
+        data:{
+            num:1
+        },
+        computed:{
+            timeStamp:function () {
+                return Date.now();
+            }
+        },
+        methods:{
+            getTimeStamp(){
+                return Date.now();
+            }
+        },
+        mounted() {
+            this.timer = setInterval(()=>{this.num ++;},1000)
+        },
+        beforeDestroy() {
+            if(this.timer){window.clearInterval(this.timer)}
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算属性demo案例</title>
+</head>
+<body>
+<div id="app">
+    两个购物车的总价为:{{prices}}
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+<script>
+    var app = new Vue({
+        el:'#app',
+        data:{
+            // 购物车1
+            package1:[
+                {name:'iPhone',price:6999,count:2},
+                {name:'iPad',price:3299,count:3}
+            ],
+            // 购物车2
+            package2:[
+                {name:'iPhone',price:6999,count:2},
+                {name:'iPad',price:3299,count:3}
+            ],
+        },
+        computed:{
+            prices:function () {
+                let prices = 0;
+                for(let i = 0;i<this.package1.length;i++){
+                    prices += this.package1[i].price * this.package1[i].count;
+                }
+
+                for(let j = 0;j<this.package2.length;j++){
+                    prices += this.package2[j].price * this.package2[j].count;
+                }
+
+                return prices;
+            }
+        }
+    })
+</script>
+</body>
+</html>

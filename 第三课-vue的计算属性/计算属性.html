@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算属性</title>
+</head>
+<body>
+<div id="app">
+    {{reverseText}}
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+<script>
+    // 将 '123,456,789' 这个字符串 反转为 '321,654,987'
+    var app = new Vue({
+        el:'#app',
+        data:{
+            text:'123,456,789'
+        },
+        computed:{
+            reverseText(){
+                return this.text.split(',').map((e)=>{
+                    return e.split('').reverse().join('');
+                })
+            }
+        }
+    });
+</script>
+</body>
+</html>

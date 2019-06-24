@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-text</title>
+</head>
+<body>
+<div id="app">
+    {{msg}}
+    <hr>
+    <!--v-text的功能与{{}}的作用是一样的即: 解析文本-->
+    <span v-text="msg"></span>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+<script>
+    var app = new Vue({
+        el:'#app',
+        data:{
+            msg:'vue is cool'
+        }
+    });
+</script>
+</body>
+</html>
