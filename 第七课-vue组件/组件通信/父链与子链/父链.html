@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>父链</title>
+</head>
+<body>
+
+<div id="app">
+    {{msg}}
+    <child-component></child-component>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+<script>
+
+    Vue.component('child-component',{
+        template:`
+            <div>
+                <button @click="changeParentMsg">点我修改父级的数据</button>
+            </div>
+        `,
+        methods:{
+            changeParentMsg(){
+                this.$parent.msg = '父级的数据已经修改'
+            }
+        }
+    })
+
+    var app = new Vue({
+        el:'#app',
+        data:{
+            msg:'父级的数据还未修改'
+        }
+    })
+</script>
+</body>
+</html>

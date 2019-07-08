@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>局部注册组件</title>
+</head>
+<body>
+
+<div id="app">
+    <my-component></my-component>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+<script>
+    // 局部注册的组件只能在vue实例绑定的元素内使用
+    var app = new Vue({
+        el:'#app',
+        data:{},
+        components:{
+            'my-component':{
+                template: '<div>我是局部注册组件</div>'
+            }
+        }
+    })
+</script>
+</body>
+</html>

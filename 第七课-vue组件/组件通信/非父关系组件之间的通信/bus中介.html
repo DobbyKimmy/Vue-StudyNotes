@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bus中介: 非父关系组件之间的通信</title>
+    <!--非父关系组件之间通信的思路:-->
+    <!--1:在父级组件中定义 bus 中介 var bus = new Vue()-->
+    <!--2:a组件中触发 ($emit) bus中介的事件: this.$root.bus.$emit('is-selected',xxx)-->
+    <!--3:在b组件的 created钩子函数中监听 bus中介在 a组件中触发的 is-selected事件:this.$root.bus.$on('is-selected',function(){xxx})-->
+</head>
+<body>
+
+<div id="app">
+    <a-component></a-component>
+    <b-component></b-component>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+<script>
+    Vue.component('a-component',{
+        template:`
+            <div>
+                <button @click="aToB">点击按钮a组件向b组件传递数据</button>
+            </div>
+        `,
+        data:function () {
+            return {
+                aData:'我是a组件中的数据'
+            }
+        },
+        methods:{
+            aToB(){
+                // bus中介触发了自定义的 myClick事件
+                this.$root.bus.$emit('myClick',this.aData)
+            }
+        }
+    })
+
+    Vue.component('b-component',{
+        template: `
+            <div></div>
+        `,
+        created() {
+            // b组件创建就开始监听 bus 中介的myClick事件
+            this.$root.bus.$on('myClick',function (value) {
+                window.alert(value)
+            })
+        }
+    })
+
+    var app = new Vue({
+        el:'#app',
+        data:{
+            // bus 为 a组件和 b组件之间通信的中介
+            bus:new Vue()
+        }
+    })
+</script>
+</body>
+</html>

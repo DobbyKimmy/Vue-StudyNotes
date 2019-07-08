@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>temp</title>
+</head>
+<body>
+
+<div id="app">
+    <my-component
+            :msg-number="msgNumber"
+            :msg-string="msgString"
+            :msg-nos="msgNumOrStr"
+            :msg-boolean="msgBoolean"
+            :msg-array="msgArray"
+            :msg-function="msgFunction"
+            :msg-validator="msgValidator"
+    ></my-component>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+<script>
+    Vue.component('my-component',{
+        template:'<div>{{msgNumber}}--{{msgString}}--{{msgNos}}--{{msgBoolean}}--{{msgArray}}--{{msgValidator}}--{{msgFunction}}</div>',
+
+        props:{
+            // 限定了 props传递的数据类型只能为 Number 型
+            msgNumber:Number,
+            // 限定了 props传递的数据类型只能为 String 型,且为必传项
+            msgString:{
+                type:String,
+                required:true
+            },
+            // 限定了 props传递的数据类型既可以是 Number 类型 也是以是 String 类型
+            msgNos:[Number,String],
+            // 限定了 props传递的数据类型只能为 Boolean 型 默认值为 false
+            msgBoolean: {
+                type:Boolean,
+                default:false,
+            },
+            // 限定了 props传递的数据类型只能为 Array 型 默认值为 [666]
+            msgArray:{
+                type:Array,
+                default: function () {
+                    return [666]
+                }
+            },
+            // 限定了 props传递的数据类型只能为 Function 函数型
+            msgFunction: {
+                type:Function
+            },
+            // 自定义验证函数
+            msgValidator: {
+                validator(value){
+                    return value<100;
+                }
+            }
+
+        }
+    })
+
+    var app = new Vue({
+        el:'#app',
+        data:{
+            msgNumber:1,
+            msgString:'Hello',
+            msgNumOrStr:12,
+            msgBoolean:true,
+            msgArray:[1,2,3],
+            msgValidator:99,
+            msgFunction:console.log('haha')
+        }
+    })
+</script>
+</body>
+</html>
+

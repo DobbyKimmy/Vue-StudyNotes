@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>props-父组件向子组件传递数据</title>
+</head>
+<body>
+
+<div id="app">
+    <!--msg为父级元素传递的属性-->
+    <my-component msg="父组件向子组件传递的消息"></my-component>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+<script>
+    var app = new Vue({
+        el:'#app',
+        data:{},
+        components:{
+            'my-component':{
+                template:'<div>{{msg}}</div>',
+                // props 用来接收 父级传递的数据 props 对应的值为数组或对象
+                props:['msg']
+            }
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义事件-子组件向父组件传递数据</title>
+    <!--子组件向父级传递数据-->
+    <!--1:首先要自定义事件-->
+    <!--2:在子组件中使用this.$emit来触发事件,第一个参数是触发的事件名,后面的参数是要传递的数据-->
+    <!--3:在自定义事件中使用参数来接收子组件向父级传递的数据-->
+</head>
+<body>
+
+<div id="app">
+    您的账户余额为:{{total}}
+    <my-component @changemoney="changeMoney"></my-component>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+<script>
+    Vue.component('my-component',{
+        template:`<div>
+                      <button @click="addMth">+1000</button>
+                      <button @click="minusMth">-1000</button>
+                  </div>`,
+        data:function(){
+            return {
+                count:2000
+            }
+        },
+        methods:{
+            addMth(){
+                this.count += 1000;
+                this.$emit('changemoney',this.count);
+            },
+            minusMth(){
+                this.count -= 1000;
+                this.$emit('changemoney',this.count)
+            }
+        }
+    })
+
+    var app = new Vue({
+        el:'#app',
+        data:{
+            total:2000
+        },
+        methods:{
+            changeMoney(value){
+                this.total = value;
+            }
+        }
+    })
+</script>
+</body>
+</html>
+

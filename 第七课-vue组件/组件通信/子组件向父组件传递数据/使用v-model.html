@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-model:子组件向父级传递数据</title>
+    <!--v-model的实质:-->
+    <!--1:v-bind动态绑定了属性-->
+    <!--2：v-on监听当前元素的input事件-->
+    <!--v-model绑定了input事件,当子组件中的this.$emit触发了input事件后,input事件就会自动接收传递过来的参数并赋值给v-model绑定的data-->
+
+</head>
+<body>
+
+<div id="app">
+    您的账户余额为:{{total}}
+    <my-component v-model="total"></my-component>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+<script>
+    Vue.component('my-component',{
+        template:`
+            <div>
+                <button @click="addMth">+1000</button>
+                <button @click="minusMth">-1000</button>
+            </div>
+        `,
+        data:function () {
+            return {
+                count:2000
+            }
+        },
+        methods:{
+            addMth(){
+                this.count += 1000;
+                this.$emit('input',this.count);
+            },
+            minusMth(){
+                this.count -= 1000;
+                this.$emit('input',this.count);
+            }
+        }
+    })
+
+    var app = new Vue({
+        el:'#app',
+        data:{
+            total:2000
+        }
+    })
+</script>
+</body>
+</html>
+

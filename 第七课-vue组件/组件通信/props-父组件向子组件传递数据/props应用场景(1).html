@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>props的第一种应用场景</title>
+</head>
+<body>
+
+<div id="app">
+    <my-component msg="父级传递的数据"></my-component>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+<script>
+    Vue.component('my-component',{
+        template:'<div>{{myMsg}}</div>',
+        props:['msg'],
+        // 第一种应用场景: 子组件将父级传递的数据保存起来
+        // 这样子组件就可以在自己的作用域下随意使用和修改props中父级传递的数据
+        // 这样做的目的是 降低 子组件和父级之间的耦合
+        data:function () {
+            return {
+                'myMsg':this.msg
+            }
+        }
+    })
+
+    var app = new Vue({
+        el:'#app',
+        data:{}
+    })
+</script>
+</body>
+</html>

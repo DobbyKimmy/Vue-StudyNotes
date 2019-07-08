@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>is属性</title>
+</head>
+<body>
+
+<!--组件会受到html标签规则上的一些限制-->
+<!--例如: table标签中不能写入div标签-->
+<!--可以使用is属性 打破html标签受限的规则-->
+<div id="app">
+    <table>
+        <tbody is="my-component"></tbody>
+    </table>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+<script>
+    var app = new Vue({
+        el:'#app',
+        data:{},
+        components:{
+            'my-component':{
+                template:'<div>局部注册组件</div>'
+            }
+        }
+    })
+</script>
+</body>
+</html>

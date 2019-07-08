@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>props应用场景2</title>
+</head>
+<body>
+
+<div id="app">
+    <input type="text" v-model="width">
+    <my-component :msg="width"></my-component>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+<script>
+    // 应用场景:在input框中输入数字动态改变div的宽度
+    var app = new Vue({
+        el:'#app',
+        data:{
+            width:''
+        },
+        components:{
+            'my-component':{
+                template:'<div :style="style"></div>',
+                props:['msg'],
+                computed:{
+                    style:function () {
+                        return {
+                            width:this.msg+'px',
+                            height:'100px',
+                            background:'red'
+                        }
+                    }
+                }
+            }
+        }
+    })
+
+</script>
+</body>
+</html>

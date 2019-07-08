@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>子链</title>
+</head>
+<body>
+
+<div id="app">
+    {{msg}}
+    <a-component ref="a"></a-component>
+    <b-component ref="b"></b-component>
+    <c-component ref="c"></c-component>
+    <div>
+        <button @click="getA">点我获取a组件的内容</button>
+    </div>
+    <div>
+        <button @click="getB">点我获取b组件的内容</button>
+    </div>
+    <div>
+        <button @click="getC">点我获取c组件的内容</button>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+<script>
+
+    Vue.component('a-component',{
+        template:`
+            <div></div>
+        `,
+        data:function () {
+            return {
+                msgA:'我是A组件的内容'
+            }
+        }
+    });
+    Vue.component('b-component',{
+        template:`
+            <div></div>
+        `,
+        data:function () {
+            return {
+                msgB:'我是B组件的内容'
+            }
+        }
+    });
+
+    Vue.component('c-component',{
+        template:`
+            <div></div>
+        `,
+        data:function () {
+            return {
+                msgC:'我是C组件的内容'
+            }
+        }
+    })
+
+    var app = new Vue({
+        el:'#app',
+        data:{
+            msg:'还未拿到子组件的内容'
+        },
+        methods:{
+            getA(){
+                this.msg = this.$refs.a.msgA;
+            },
+            getB(){
+                this.msg = this.$refs.b.msgB;
+            },
+            getC(){
+                this.msg = this.$refs.c.msgC;
+            }
+        }
+    })
+</script>
+</body>
+</html>
