@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>作用域插槽</title>
+</head>
+<body>
+
+<div id="app">
+    <my-component>
+        <!--vue.js 2.5.0前一定要在template标签中写slot-scope-->
+        <template slot="aaa" slot-scope="prop">
+            {{prop.data}}
+        </template>
+    </my-component>
+
+    <my-component>
+        <!--vue.js 2.5.0起,任何标签上都可以写入slot-scope属性-->
+        <p slot="aaa" slot-scope="prop">
+            {{prop.data}}
+        </p>
+    </my-component>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+<script>
+
+    Vue.component('my-component',{
+        template:`
+            <div>
+                <slot name="aaa" data="子组件的数据"></slot>
+            </div>
+        `
+    });
+
+    var app = new Vue({
+        el:'#app',
+        data:{},
+    })
+</script>
+</body>
+</html>

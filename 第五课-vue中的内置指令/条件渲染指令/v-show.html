@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <div v-show="9>this.num">{{msg}}</div>
+    <button @click="changeNum">clickMe</button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+<script>
+    var app = new Vue({
+       el:'#app',
+       data:{
+           msg:'vue is cool!',
+           num:1
+       },
+       methods:{
+           changeNum(){
+               this.num = (this.num === 1 ? 9:1)
+           }
+       }
+    });
+</script>
+</body>
+</html>

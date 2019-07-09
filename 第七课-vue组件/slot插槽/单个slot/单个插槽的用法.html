@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>单个插槽的用法</title>
+</head>
+<body>
+
+<div id="app">
+    <my-component>
+        <!--p标签的内容会将子组件插槽里的内容替换掉-->
+        <p>父组件插入的内容</p>
+    </my-component>
+
+    <my-component>
+    </my-component>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+<script>
+
+    Vue.component('my-component',{
+        template:`
+            <div>
+                <slot>如果父组件没有插入任何内容,我就会作为默认显示内容</slot>
+            </div>
+        `
+    });
+
+    var app = new Vue({
+        el:'#app',
+        data:{},
+    })
+</script>
+</body>
+</html>

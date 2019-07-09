@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-once</title>
+</head>
+<body>
+<div id="app">
+    <!--v-once:定义了v-once的元素或组件只渲染一次-->
+    <span v-once>{{msg}}</span>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+<script>
+    var app = new Vue({
+        el:'#app',
+        data:{
+            msg:'vue is cool!'
+        }
+    })
+</script>
+</body>
+</html>
+

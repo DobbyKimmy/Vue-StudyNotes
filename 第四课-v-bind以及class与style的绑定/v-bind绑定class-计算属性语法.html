@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-bind绑定class计算属性语法</title>
+    <style>
+        .lightpink{
+            width: 100px;
+            height: 100px;
+            background-color: lightpink;
+        }
+        .lightgreen{
+            width: 100px;
+            height: 100px;
+            background-color: lightgreen;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <div :class="className"></div>
+    <button @click="changeColor">clickMe</button>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+<script>
+    var app = new Vue({
+        el:'#app',
+        data:{
+            isLightpink: true,
+            isLightgreen: false
+        },
+        computed:{
+            className:function () {
+                return {
+                    lightpink:this.isLightpink,
+                    lightgreen:this.isLightgreen
+                }
+            }
+        },
+        methods:{
+            changeColor(){
+                this.isLightgreen = !this.isLightgreen;
+                this.isLightpink = !this.isLightpink;
+            }
+        }
+    })
+</script>
+</body>
+</html>

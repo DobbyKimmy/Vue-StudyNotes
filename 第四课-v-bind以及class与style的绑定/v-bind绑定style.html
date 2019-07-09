@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-bind绑定内联样式</title>
+</head>
+<body>
+<div id="app">
+    <!--v-bind 绑定style 键代表属性名称,值对应属性值-->
+    <div :style="{'color':color,'font-size':fontSize}">vue is cool!</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+<script>
+    var app = new Vue({
+        el:'#app',
+        data:{
+            color:'red',
+            fontSize:'32px'
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>复选框绑定值</title>
+</head>
+<body>
+
+<div id="app">
+    <input type="checkbox" v-model="toggle" v-bind:true-value="value1" v-bind:false-value="value2">
+    {{toggle}}
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+<script>
+    var app = new Vue({
+        el:'#app',
+        data:{
+            toggle:'',
+            value1:'我被选中了',
+            value2:'我没有被选中'
+        }
+    })
+</script>
+</body>
+</html>

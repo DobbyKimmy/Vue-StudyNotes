@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-if,v-else-if,v-else</title>
+</head>
+<body>
+<div id="app">
+    <!--v-if,v-else-if后面的等号内容为布尔值,v-else后面不需要加任何东西-->
+    <span v-if="6<3">{{msg1}}</span>
+    <span v-else-if="1===1">{{msg2}}</span>
+    <span v-else>{{msg3}}</span>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+<script>
+    var app = new Vue({
+        el:'#app',
+        data:{
+            msg1:'I like apple',
+            msg2:'I like banana',
+            msg3:'I like orange'
+        }
+    })
+</script>
+</body>
+</html>

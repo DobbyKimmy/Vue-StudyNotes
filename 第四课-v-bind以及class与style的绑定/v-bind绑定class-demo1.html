@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>点击按钮,完成背景颜色的切换</title>
+    <style>
+        .lightpink{
+            width: 100px;
+            height: 100px;
+            background-color: lightpink;
+        }
+        .lightgreen{
+            width: 100px;
+            height: 100px;
+            background-color: lightgreen;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <div :class="{lightpink:isLightpink,lightgreen:isLightgreen}"></div>
+    <button @click="changeColor">clickMe</button>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+<script>
+    var app = new Vue({
+        el:'#app',
+        data:{
+            isLightpink: true,
+            isLightgreen: false
+        },
+        methods:{
+            changeColor(){
+                this.isLightgreen = !this.isLightgreen;
+                this.isLightpink = !this.isLightpink;
+            }
+        }
+    })
+</script>
+</body>
+</html>

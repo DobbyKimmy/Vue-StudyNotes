@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>once事件只执行一次</title>
+</head>
+<body>
+
+<div id="app">
+    <button @click.once="btnClick">clickMe</button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+<script>
+    var app = new Vue({
+        el:'#app',
+        data:{
+
+        },
+        methods:{
+            btnClick(){
+                window.alert('只执行一次');
+            }
+        }
+    });
+</script>
+</body>
+</html>

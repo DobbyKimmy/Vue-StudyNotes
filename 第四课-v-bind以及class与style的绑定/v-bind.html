@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-bind</title>
+</head>
+<body>
+<div id="app">
+    <!--v-bind的作用是绑定html标签属性,而且是动态绑定!-->
+    <a v-bind:href="url">百度</a>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+            url:'http://www.baidu.com'
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>prevent阻止form表单提交时重载页面</title>
+</head>
+<body>
+
+<div id="app">
+    <form action="" v-on:submit.prevent="preventFunc">
+        <input type="text">
+        <button type="submit">clickMe</button>
+    </form>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+<script>
+    var app = new Vue({
+        el:'#app',
+        data:{
+
+        },
+        methods:{
+            preventFunc(){
+                window.alert('阻止了表单提交事件时重载页面');
+            }
+        }
+    })
+</script>
+</body>
+</html>

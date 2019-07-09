@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>单选框</title>
+</head>
+<body>
+
+<div id="app">
+    <!--v-model绑定单选框-->
+    <!--v-model无法绑定单个单选按钮;单个单选按钮的绑定需要v-bind-->
+    <!--绑定多个单选框时,v-model会和单选框的value进行绑定-->
+    apple<input type="radio" name="fruits" value="apple" v-model="selectFruit"> <br>
+    banana<input type="radio" name="fruits" value="banana" v-model="selectFruit"> <br>
+    pineapple<input type="radio" name="fruits" value="pineapple" v-model="selectFruit"> <br>
+    你现在选中的水果是:{{selectFruit}}
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+<script>
+    var app = new Vue({
+        el:'#app',
+        data:{
+            selectFruit:''
+        }
+    })
+</script>
+</body>
+</html>

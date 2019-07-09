@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>self只作用在元素本身而非子元素时调用</title>
+</head>
+<body>
+
+<div id="app">
+    <div @click.self="divClick" style="width: 100px;height: 100px;background-color: lightpink">
+        <button @click="btnClick">clickMe</button>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+<script>
+    var app = new Vue({
+        el:'#app',
+        data:{
+
+        },
+        methods:{
+            btnClick(){window.alert('button被点击了');},
+            divClick(){window.alert('div被点击了');}
+        }
+    })
+</script>
+</body>
+</html>

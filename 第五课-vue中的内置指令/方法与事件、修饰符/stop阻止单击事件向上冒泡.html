@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>stop阻止单击事件向上冒泡</title>
+</head>
+<body>
+
+<div id="app">
+    <div @click="divClick()">
+        <!--@click.stop阻止了向上冒泡-->
+        <button @click.stop="btnClick()">clickMe</button>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+<script>
+    var app = new Vue({
+        el:'#app',
+        data:{
+
+        },
+        methods:{
+            btnClick(){
+                window.alert('button被点击了');
+            },
+            divClick(){
+                window.alert('div被点击了');
+            }
+        }
+    })
+</script>
+</body>
+</html>

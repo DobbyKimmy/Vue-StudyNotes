@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>下拉框</title>
+</head>
+<body>
+
+<div id="app">
+    <!--对于下拉框,v-model绑定的是选项的value值的字符串或数组-->
+    <select name="" id="" v-model="selectFruit">
+        <option value="apple">apple</option>
+        <option value="banana">banana</option>
+        <option value="pineapple">pineapple</option>
+    </select>
+    <br>
+    选中的水果是:
+    {{selectFruit}}
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+<script>
+    var app = new Vue({
+        el:'#app',
+        data:{
+            selectFruit: ''
+        }
+    })
+</script>
+</body>
+</html>

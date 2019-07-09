@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>点击按钮切换input框</title>
+</head>
+<body>
+<div id="app">
+    <!--vue在渲染元素时,出于效率会尽可能复用已有的元素而并非重新渲染,如果在不想复用的元素后面添加唯一的key就不会复用-->
+    <div v-if="this.type === 'name'" key="name">
+        <input type="text" placeholder="请输入用户名">
+    </div>
+    <div v-else-if="this.type === 'password'" key="password">
+        <input type="password" placeholder="请输入密码">
+    </div>
+    <button @click="changeInput">clickMe</button>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+<script>
+    var app = new Vue({
+        el:'#app',
+        data:{
+            type:'name'
+        },
+        methods:{
+            changeInput(){
+                this.type = (this.type === 'name'?'password':'name');
+            }
+        }
+    })
+</script>
+</body>
+</html>

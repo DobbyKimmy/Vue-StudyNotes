@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-for</title>
+    <style>
+        li{
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+
+<div id="app">
+    <!--v-for遍历多个对象: v-for="item in items" 其中items为数组-->
+    我喜欢的水果:
+    <ul>
+        <li v-for="fruit in fruits">{{fruit.name}}</li>
+    </ul>
+    <!--v-for遍历多个对象,可以获取索引: v-for="(item,index) in items" 其中items为数组-->
+    我喜欢的水果:
+    <ul>
+        <li v-for="(fruit,index) in fruits">第{{index+1}}个:{{fruit.name}}</li>
+    </ul>
+
+    <!--v-for遍历一个对象的多个属性 v-for="item in items"-->
+    我喜欢的女星:
+    <ul>
+        <li v-for="girl in girls">{{girl}}</li>
+    </ul>
+    <!--v-for遍历一个对象的多个属性,可以获取键,值以及索引 v-for="(value,key,index) in items" 注意顺序-->
+    我喜欢的女星:
+    <ul>
+        <li v-for="(girl,key,index) in girls">第{{index+1}}个女星:{{girl}}(key:{{key}})</li>
+    </ul>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+<script>
+    var app = new Vue({
+        el:'#app',
+        data:{
+            fruits:[
+                {name:'apple'},
+                {name:'banana'},
+                {name:'orange'}
+            ],
+            girls:{
+                girl1:'长泽雅美',
+                girl2:'新垣结衣',
+                girl3:'苍井空'
+            }
+        }
+    })
+</script>
+</body>
+</html>

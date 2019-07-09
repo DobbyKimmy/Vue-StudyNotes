@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>复选框</title>
+</head>
+<body>
+
+<!--对于复选框的v-model绑定,绑定的是复选框value值的数组-->
+<div id="app">
+    请找出动作女明星 <br>
+    杨紫琼 <input type="checkbox" value="Yang" v-model="selectActress"> <br>
+    上原亚衣 <input type="checkbox" value="Uehara" v-model="selectActress"> <br>
+    欧阳娜娜 <input type="checkbox" value="Nana" v-model="selectActress"> <br>
+    鹿晗 <input type="checkbox" value="Lu" v-model="selectActress"> <br>
+    苍井空 <input type="checkbox" value="Aoi" v-model="selectActress"> <br>
+
+    <div v-if="answer">回答正确</div>
+    <div v-else>回答错误</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+<script>
+    var app = new Vue({
+        el:'#app',
+        data:{
+            selectActress:[],
+            active:'block'
+        },
+        computed:{
+            answer(){
+                if(this.selectActress.indexOf('Uehara')!=-1 && this.selectActress.indexOf('Aoi')!=-1 && this.selectActress.length === 2){
+                    return true
+                }else{
+                    return false
+                }
+            }
+        }
+    })
+</script>
+</body>
+</html>

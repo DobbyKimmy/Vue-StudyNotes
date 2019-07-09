@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-bind绑定class:数组语法及对象语法混用</title>
+    <style>
+        .div{
+            height: 200px;
+            width: 200px;
+        }
+        .red{
+            background: red;
+        }
+        .blue{
+            background: blue;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <div :class="[{'red':isRed,'blue':isBlue},divBasic]"></div>
+    <button @click="changeColor">change</button>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+<script>
+    var app = new Vue({
+        el:'#app',
+        data:{
+           isRed:true,
+           isBlue:false,
+           divBasic: 'div'
+        },
+        methods:{
+            changeColor(){
+                this.isRed = !this.isRed;
+                this.isBlue = !this.isBlue;
+            }
+        }
+    })
+</script>
+</body>
+</html>
+

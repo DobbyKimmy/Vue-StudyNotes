@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态组件</title>
+</head>
+<body>
+<!--动态组件:-->
+<!--Vue.js提供了 component 元素-->
+<!--component作用是动态挂载不同的组件
+使用v-bind动态绑定component的is属性来实现动态组件-->
+<div id="app">
+    <component :is="tag"></component>
+    <button @click="change('a')">第一句</button>
+    <button @click="change('b')">第二句</button>
+    <button @click="change('c')">第三句</button>
+    <button @click="change('d')">第四句</button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+<script>
+    Vue.component('a-component',{
+        template:'<div>窗前明月光</div>'
+    });
+    Vue.component('b-component',{
+        template:'<div>疑是地上霜</div>'
+    });
+    Vue.component('c-component',{
+        template:'<div>举头望明月</div>'
+    });
+    Vue.component('d-component',{
+        template:'<div>低头思故乡</div>'
+    })
+
+    var app = new Vue({
+        el:'#app',
+        data:{
+            tag:'a-component'
+        },
+        methods:{
+            change(tag){
+                this.tag = tag+'-component'
+            }
+        }
+    })
+</script>
+</body>
+</html>
+

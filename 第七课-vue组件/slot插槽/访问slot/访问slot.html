@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>访问slot</title>
+</head>
+<body>
+
+<div id="app">
+    <my-component>
+        <h3 slot="header">我是标题</h3>
+        <p slot="content">我是正文</p>
+        <p slot="footer">我是尾部信息</p>
+    </my-component>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+<script>
+    var app = new Vue({
+        el:'#app',
+        data:{},
+        components:{
+            'my-component':{
+                // template中只能有一个div包裹
+                template:`
+                    <div>
+                        <div class="header">
+                            <slot name="header"></slot>
+                        </div>
+                        <div class="content">
+                            <slot name="content"></slot>
+                        </div>
+                        <div class="footer">
+                            <slot name="footer"></slot>
+                        </div>
+                    </div>
+                `,
+                mounted:function () {
+                    var header = this.$slots.header;
+                    var text = header[0].elm.innerText;
+                    var html = header[0].elm.innerHTML;
+                    console.log(header);
+                    console.log(text);
+                    console.log(html);
+                }
+            }
+        }
+    });
+
+</script>
+</body>
+</html>
